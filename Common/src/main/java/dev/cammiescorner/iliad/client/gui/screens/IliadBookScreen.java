@@ -69,6 +69,7 @@ public class IliadBookScreen extends Screen {
 			}
 
 			access.registryOrThrow(IliadRegistries.ENTRY).forEach(iliadEntry -> {
+				// TODO automatically find place for widgets if posX and posY are equal to 0xf00f
 				if(iliadEntry.tab().is(location))
 					addEntryWidget(iliadEntry, new EntryWidget(leftPos + iliadEntry.x(), topPos + iliadEntry.y(), iliadEntry.getId(access), book, IliadClient::entryWidgetClick));
 			});

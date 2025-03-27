@@ -37,10 +37,10 @@
   "icon": "icon.png",
   "entrypoints": {
     "main": [
-		"dev.cammiescorner.iliad.fabric.entrypoints.Main"
+      "dev.cammiescorner.iliad.fabric.entrypoints.FabricMain"
 	],
     "client": [
-		"dev.cammiescorner.iliad.fabric.entrypoints.Client"
+		"dev.cammiescorner.iliad.fabric.entrypoints.FabricClient"
 	]
   },
   "custom": {

@@ -7,7 +7,6 @@ import dev.cammiescorner.iliad.api.book.IliadTab;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 
-// TODO register entries
 public class IliadRegistries {
 	public static final ResourceKey<Registry<IliadBook>> BOOK = ResourceKey.createRegistryKey(Iliad.id("books"));
 	public static final ResourceKey<Registry<IliadTab>> TAB = ResourceKey.createRegistryKey(Iliad.id("book_tabs"));

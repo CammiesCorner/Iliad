@@ -25,11 +25,11 @@ public record IliadEntry(ItemStack icon, boolean isHidden, boolean knownByDefaul
 	public static final Codec<IliadEntry> DIRECT_CODEC = RecordCodecBuilder.create(entryInstance -> entryInstance.group(
 			ItemStack.CODEC.fieldOf("item_icon").forGetter(IliadEntry::icon),
 			Codec.BOOL.optionalFieldOf("hidden", false).forGetter(IliadEntry::isHidden),
-			Codec.BOOL.optionalFieldOf("known_by_default", false).forGetter(IliadEntry::knownByDefault),
+			Codec.BOOL.optionalFieldOf("known_by_default", false).forGetter(IliadEntry::knownByDefault), // TODO replace with conditions for unlocking
 			ResourceLocation.CODEC.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("parents", Set.of()).forGetter(IliadEntry::parentIds),
 			IliadTab.CODEC.fieldOf("tab").forGetter(IliadEntry::tab),
-			Codec.INT.optionalFieldOf("posX", 0).forGetter(IliadEntry::x),
-			Codec.INT.optionalFieldOf("posY", 0).forGetter(IliadEntry::y),
+			Codec.INT.optionalFieldOf("posX", 0xf00f).forGetter(IliadEntry::x),
+			Codec.INT.optionalFieldOf("posY", 0xf00f).forGetter(IliadEntry::y),
 			IliadPage.CODEC.listOf().optionalFieldOf("pages", List.of()).forGetter(IliadEntry::pages)
 	).apply(entryInstance, IliadEntry::new));
 	public static final StreamCodec<RegistryFriendlyByteBuf, Holder<IliadEntry>> STREAM_CODEC = ByteBufCodecs.holderRegistry(IliadRegistries.ENTRY);

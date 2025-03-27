@@ -5,9 +5,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
 @Mod(Iliad.MOD_ID)
-public class Main {
+public class NeoMain {
 
-    public Main(IEventBus modBus) {
+    public NeoMain(IEventBus modBus) {
 
     }
 }
