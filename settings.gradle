@@ -1,0 +1,50 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net'
+        }
+        maven {
+            name = 'NeoForge'
+            url = 'https://maven.neoforged.net/releases'
+        }
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.9.0'
+}
+
+rootProject.name = 'Iliad'
+include 'Common', 'Fabric', 'NeoForge'
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            from(files("Common/libs.versions.toml"))
+        }
+        fabric {
+            from(files("Fabric/libs.versions.toml"))
+        }
+        neoforge {
+            from(files("NeoForge/libs.versions.toml"))
+        }
+    }
+}
+
+def ENV = System.getenv()
+
+buildCache {
+    remote(HttpBuildCache) {
+        url = "https://ci-cache.uuid.gg/cache"
+        if (ENV.CI && ENV.GRADLE_BUILD_CACHE_USER && ENV.GRADLE_BUILD_CACHE_TOKEN) {
+            push = true
+            credentials {
+                username = ENV.GRADLE_BUILD_CACHE_USER
+                password = ENV.GRADLE_BUILD_CACHE_TOKEN
+            }
+        }
+    }
+}

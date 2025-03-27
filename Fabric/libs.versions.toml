@@ -1,0 +1,17 @@
+[versions]
+# The latest versions are available at https://fabricmc.net/develop
+loom = "1.10.1"
+
+fabric_loader = "0.16.10"
+fabric_api = "0.115.1+1.21.1"
+
+modmenu = "11.0.3" # https://modrinth.com/mod/modmenu/versions
+
+[libraries]
+fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
+fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
+
+modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
+
+[plugins]
+loom = { id = "fabric-loom", version.ref = "loom" }
