@@ -3,13 +3,11 @@ package dev.cammiescorner.iliad.client;
 import dev.cammiescorner.iliad.Iliad;
 import dev.cammiescorner.iliad.api.book.IliadEntry;
 import dev.cammiescorner.iliad.client.gui.screens.BookPageScreen;
-import dev.cammiescorner.iliad.client.gui.screens.IliadBookScreen;
 import dev.cammiescorner.iliad.client.gui.widgets.EntryWidget;
 import dev.cammiescorner.iliad.common.MainHelper;
 import dev.upcraft.sparkweave.api.entrypoint.ClientEntryPoint;
 import dev.upcraft.sparkweave.api.platform.ModContainer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -20,8 +18,7 @@ import java.util.Map;
 
 public class IliadClient implements ClientEntryPoint {
 	public static final Map<ResourceLocation, Vec2> GUIDEBOOK_TAB_OFFSETS = new HashMap<>();
-	public static ResourceLocation lastGuideBookTab = Iliad.id("empty");
-	public static Screen lastGuideBookScreen = new IliadBookScreen(null); // TODO set these by book
+	public static ResourceLocation lastGuideBookTab = Iliad.id("empty"); // TODO save last page and last tab to the book itself
 
 	@Override
 	public void onInitializeClient(ModContainer mod) {

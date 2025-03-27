@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.cammiescorner.iliad.api.book.IliadBook;
 import dev.cammiescorner.iliad.api.book.IliadEntry;
 import dev.cammiescorner.iliad.api.book.IliadPage;
-import dev.cammiescorner.iliad.client.IliadClient;
 import dev.cammiescorner.iliad.client.gui.widgets.ArrowWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -79,7 +78,6 @@ public class BookPageScreen extends Screen {
 
 	@Override
 	public void onClose() {
-		IliadClient.lastGuideBookScreen = this;
 		super.onClose();
 	}
 

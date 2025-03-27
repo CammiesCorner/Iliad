@@ -47,9 +47,6 @@ public class IliadBookScreen extends Screen {
 
 	@Override
 	protected void init() {
-		if(book == null)
-			Minecraft.getInstance().setScreen(null);
-
 		super.init();
 		Vec2 offsets = IliadClient.GUIDEBOOK_TAB_OFFSETS.getOrDefault(IliadClient.lastGuideBookTab, new Vec2(0, 0));
 		access = Minecraft.getInstance().level.registryAccess();
@@ -83,7 +80,6 @@ public class IliadBookScreen extends Screen {
 	public void onClose() {
 		IliadClient.lastGuideBookTab = tabId;
 		IliadClient.GUIDEBOOK_TAB_OFFSETS.put(tabId, new Vec2(entryOffsetX, entryOffsetY));
-		IliadClient.lastGuideBookScreen = this;
 		super.onClose();
 	}
 
