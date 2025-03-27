@@ -10,10 +10,10 @@ import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 
 @CalledByReflection
 public class FabricMain implements ModInitializer {
-    @Override
-    public void onInitialize() {
-        DynamicRegistries.registerSynced(IliadRegistries.BOOK, IliadBook.DIRECT_CODEC);
-        DynamicRegistries.registerSynced(IliadRegistries.TAB, IliadTab.DIRECT_CODEC);
-        DynamicRegistries.registerSynced(IliadRegistries.ENTRY, IliadEntry.DIRECT_CODEC);
-    }
+	@Override
+	public void onInitialize() {
+		DynamicRegistries.registerSynced(IliadRegistries.BOOK, IliadBook.DIRECT_CODEC);
+		DynamicRegistries.registerSynced(IliadRegistries.TAB, IliadTab.DIRECT_CODEC);
+		DynamicRegistries.registerSynced(IliadRegistries.ENTRY, IliadEntry.DIRECT_CODEC);
+	}
 }

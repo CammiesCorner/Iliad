@@ -20,12 +20,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 // TODO add default interactions
-public record IliadEntry(ItemStack icon, boolean isHidden, boolean knownByDefault, Set<ResourceLocation> parentIds, Holder<IliadTab> tab, int x, int y, List<IliadPage> pages) {
+public record IliadEntry(ItemStack icon, boolean isHidden, Set<ResourceLocation> requiredAdvancements, Set<ResourceLocation> parentIds, Holder<IliadTab> tab, int x, int y, List<IliadPage> pages) {
 	public static final Codec<Holder<IliadEntry>> CODEC = RegistryFixedCodec.create(IliadRegistries.ENTRY);
 	public static final Codec<IliadEntry> DIRECT_CODEC = RecordCodecBuilder.create(entryInstance -> entryInstance.group(
 			ItemStack.CODEC.fieldOf("item_icon").forGetter(IliadEntry::icon),
 			Codec.BOOL.optionalFieldOf("hidden", false).forGetter(IliadEntry::isHidden),
-			Codec.BOOL.optionalFieldOf("known_by_default", false).forGetter(IliadEntry::knownByDefault), // TODO replace with conditions for unlocking
+			ResourceLocation.CODEC.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("required_advancements", Set.of()).forGetter(IliadEntry::requiredAdvancements),
 			ResourceLocation.CODEC.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("parents", Set.of()).forGetter(IliadEntry::parentIds),
 			IliadTab.CODEC.fieldOf("tab").forGetter(IliadEntry::tab),
 			Codec.INT.optionalFieldOf("posX", 0xf00f).forGetter(IliadEntry::x),
@@ -56,7 +56,7 @@ public record IliadEntry(ItemStack icon, boolean isHidden, boolean knownByDefaul
 		return "IliadEntry[" +
 				"icon=" + icon + ", " +
 				"isHidden=" + isHidden + ", " +
-				"knownByDefault=" + knownByDefault + ", " +
+				"requiredAdvancements=" + requiredAdvancements + ", " +
 				"parentIds=" + parentIds + ", " +
 				"tab=" + tab + ", " +
 				"x=" + x + ", " +
